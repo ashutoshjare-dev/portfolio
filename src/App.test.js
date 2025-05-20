@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock('./components/MotionWrapper', () => {
+  return (Component) => Component;
 });
+
+
+test('renders portfolio heading', () => {
+  render(<App />);
+  const heading = screen.getByText(/Hi, I'm Ashutosh Jare 👋/i);
+  expect(heading).toBeInTheDocument();
+});
+
